@@ -1,0 +1,2 @@
+remove_by_id 2
+execute_script main.java.resources\execution_file_2.txt
