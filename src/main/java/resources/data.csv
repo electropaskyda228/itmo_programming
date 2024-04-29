@@ -1,0 +1,4 @@
+ID;name;coordinates;creation date;oscars count;golden palm count;genre;mpaa rating;operator's name;operator's birthday;operator's weight;operator's passportID;operator's nationality
+1;George;12 30.0;2024-02-17T18:00:06.181371200+03:00[Europe/Moscow];1;1;action;PG;Yea;01-03-2013;80;5154381212;India
+2;hering;12 40.0;2024-02-17T21:00:08.788533800+03:00[Europe/Moscow];1;2;musical;PG 13;kik;01-03-2013;50;1230491212;India
+3;Poker;12 30.0;2024-03-03T19:19:48.115966600+03:00[Europe/Moscow];12;12;musical;R;pol;01-03-2013;109;null;Japan
