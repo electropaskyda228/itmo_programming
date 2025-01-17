@@ -1,0 +1,60 @@
+/* Общие стили */
+body {
+    background-color: #121212; /* Темно-серый фон */
+    color: white;              /* Белый текст */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Заголовок h1 */
+h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-top: 40px;
+}
+
+/* Подзаголовки h2 */
+h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+/* Контейнер для часов */
+#clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: #272727; /* Темнее фона */
+    margin-bottom: 60px;
+}
+
+/* Часы */
+#time {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+/* Форма и ссылка */
+#next {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+a {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007bff; /* Синий цвет ссылки */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #0056b3; /* Темнее синий при наведении */
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>JSF blyat</title>
+    <meta charset="utf-8" />
+    <h:outputStylesheet name="styles/style.css"/>
+</h:head>
+<h:body>
+    <table>
+        <tr>
+            <td rowspan="2" class="main" style="vertical-align: top;">
+                <h:form id="coords">
+                    <span>Enter Y (-5; 3): </span>
+                    <h:inputText id="y_enter" class="enter" required="true" value="#{areaChecker.y}">
+                        <f:validateDoubleRange minimum="-5" maximum="3"/>
+                    </h:inputText><br/><br/>
+                    <h:message for="y_enter" style="color: red;"/>
+                    <span>Choose R: </span>
+                    <ui:repeat var="val" value="#{areaChecker.r_values}">
+                        <h:commandLink value="#{val}" id="button_r_#{val}" class="enter r_change" action="#{areaChecker.changeParamR}">
+                            <f:param name="buttonName" value="#{val}"/>
+                            <f:ajax execute="@this" render="targetComponentId"/>
+                        </h:commandLink>
+                    </ui:repeat><br/><br/>
+                    <span>Choose X (-3; 3): </span>
+                    <p:spinner id="x_enter" value="#{areaChecker.x}" min="-3" max="3" step="1"/>
+                    <br/><br/>
+                    <h:commandButton id="submit_coords" value="Submit" class="submit_button">
+                        <f:ajax execute="@form" listener="#{areaChecker.provideForm}" render="table-answer"/>
+                    </h:commandButton>
+                </h:form>
+                <h:form id="previous">
+                    <h:link title="Начать" value="Вернуться" outcome="goToIndex" class=".previous"/>
+                </h:form>
+                <h:form id="svg-form">
+                    <h:inputHidden id="xValue" value="#{areaChecker.x}" />
+                    <h:inputHidden id="yValue" value="#{areaChecker.y}" />
+                    <h:inputHidden id="rValue" value="#{areaChecker.r}" />
+
+                    <h:commandButton id="svgClickButton" style="display: none">
+                        <f:ajax execute="@form" listener="#{areaChecker.provideForm}" render="table-answer"/>
+                    </h:commandButton>
+                </h:form>
+
+            </td>
+            <td class="main" id="picture">
+                <div style="position: relative; width: 400px; height: 300px; border: 1px solid black; overflow: hidden;">
+                    <svg width="400" height="300">
+                        <rect width="100" height="100" x="200" y="150" fill="red" id="rect_field"/>
+                        <polygon points="200 150, 100 150, 200 50" fill="red" id="triangle_field"/>
+                        <polygon points="200 150, 150 150, 200 200" fill="red" stroke="red" id="triangle_cycle_field"/>
+                        <path d="M 150,150 A 50,50 0 0 0 200,200" fill="red" stroke="red" id="cycle_field"/>
+                        <line x1="200" y1="0" x2="200" y2="300" stroke="white"/>
+                        <polygon points="200 0, 210 10, 190 10" fill="white"/>
+                        <line x1="0" y1="150" x2="400" y2="150" stroke="white"/>
+                        <polygon points="400 150, 390 160, 390 140" fill="white"/>
+                    </svg>
+                    <canvas id="canvas" width="400" height="300" style="position: absolute; top: 0; left: 0; z-index: 10;"></canvas>
+                </div>
+            </td>
+        </tr>
+        <td class="main">
+            <h:dataTable id="table-answer" value="#{areaChecker.results.results}" var="point">
+                <h:column>
+                    <f:facet name="header">X</f:facet>
+                    #{point.x}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Y</f:facet>
+                    #{point.y}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">R</f:facet>
+                    #{point.r}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Result</f:facet>
+                    #{point.result}
+                </h:column>
+            </h:dataTable>
+        </td>
+    </table>
+    <script src="resources/scripts/main.js"/>
+</h:body>
+
+</html>

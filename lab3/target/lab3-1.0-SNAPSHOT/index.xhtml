@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>JSF pidor</title>
+    <h:outputStylesheet name="styles/welcome.css"/>
+</h:head>
+
+<h:body>
+    <h1>George Judin</h1>
+    <h2>P3213</h2>
+    <h2>Task: 556</h2>
+    <div id="clock-container">
+        <span id="time">00:00:00</span>
+    </div>
+    <h:form id="next">
+        <h:link title="Начать" value="Перейти" outcome="goToMain"/>
+    </h:form>
+    <script src="./resources/scripts/welcome.js"/>
+</h:body>
+
+</html>
